@@ -36,9 +36,19 @@ const cards = (state = [], action) => {
     }
 };
 
+const filter = (state = '', action) => {
+    switch (action.type) {
+        case actions.FILTER_CARDS:
+            return action.filter;
+        default:
+            return state;
+    }
+};
+
 const rootReducer = combineReducers({
     lists,
     cards,
+    filter,
     routing
 });
 

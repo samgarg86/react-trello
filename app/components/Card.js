@@ -61,6 +61,8 @@ class Card extends React.Component {
             <div className="Card" style={{opacity: isDragging ? 0.5 : 1}}>
                 <div className="Card-title">
                     <InlineEdit
+                        className="Card-title-inline"
+                        staticElement="div"
                         activeClassName="editing"
                         editing
                         stopPropagation

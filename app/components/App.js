@@ -11,6 +11,7 @@ const App = ({ children }) =>
     <div className="AppContainer">
         { children }
         <footer>
+            <Link to="/">Board</Link>
             <Link to="/about">About</Link>
         </footer>
     </div>;

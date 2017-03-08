@@ -17,6 +17,7 @@ class CardList extends React.Component  {
         title: PropTypes.string,
         onAddCard: PropTypes.func,
         cards: PropTypes.array,
+        filter: PropTypes.string,
         onTitleChanged: PropTypes.func,
 
         connectDropTarget: PropTypes.func.isRequired,
@@ -35,21 +36,36 @@ class CardList extends React.Component  {
     }
 
     render() {
-        const {title, cards, onAddCard, connectDropTarget, isOver, canDrop} = this.props;
+        const {title, cards, filter, onAddCard, connectDropTarget, isOver, canDrop} = this.props;
 
         const isActive = canDrop && isOver;
 
         let backgroundColor = '#E2E4E6';
         if (isActive) {
-            backgroundColor = '#8fc14d';
+            backgroundColor = '#8ac17c';
         } else if (canDrop) {
-            backgroundColor = '#f9e43f';
+            backgroundColor = '#f9dd4d';
         }
+
+        let rows = [];
+
+        cards.forEach((c, index) => {
+            const titleLC = c.title.toLowerCase();
+            const filterLC = filter.toLowerCase();
+
+            if (titleLC.indexOf(filterLC) !== -1) {
+                rows.push(
+                    <CardContainer key={index} id={c.id}/>
+                );
+            }
+        });
+
         return connectDropTarget(
             <div className="CardList" style={{backgroundColor}}>
                 <div className="CardList-title">
                     <InlineEdit
                         className="CardList-title-inline"
+                        staticElement="div"
                         activeClassName="editing"
                         editing
                         stopPropagation
@@ -58,7 +74,7 @@ class CardList extends React.Component  {
                         change={this.dataChanged}
                     />
                 </div>
-                { cards.map((card, index) => <CardContainer key={index} id={card.id}/>, ) }
+                { rows }
                 <a href="#" className="Cardlist-addCard" onClick={onAddCard}>Add a card...</a>
             </div>
         );
