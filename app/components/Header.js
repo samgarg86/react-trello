@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import FilterContainer from '../containers/FilterContainer';
-import '../styles/header.scss';
+import '../styles/Header.scss';
 
 const Header = ({onAddNewList}) => {
     return (

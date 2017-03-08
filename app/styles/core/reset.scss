@@ -56,3 +56,19 @@ button {
   border: none 0;
   background: transparent;
 }
+
+input.editing {
+  font-size: inherit;
+  max-width: 100%;
+  display: block;
+  color: #969595;
+  outline: none;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+}
+
+a {
+  color: white;
+}
