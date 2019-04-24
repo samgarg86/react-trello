@@ -4,10 +4,15 @@ import { render } from 'react-dom';
 import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { AppContainer } from 'react-hot-loader';
-import configureStore from './store/configureStore';
 import Root from './containers/Root';
+import { createStore } from 'redux';
+import rootReducer from './reducers';
 
-const store = configureStore();
+const store = createStore(
+    rootReducer,
+    {lists: [], cards: [], filter: ''},
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    );
 const history = syncHistoryWithStore(browserHistory, store);
 
 render(
