@@ -10,7 +10,8 @@ export const CHANGE_LIST_TITLE = 'CHANGE_LIST_TITLE';
 export function changeListTitle(id, title) {
     return {
         type: 'CHANGE_LIST_TITLE',
-        id, title
+        id,
+        title
     };
 }
 
@@ -18,7 +19,8 @@ export const ADD_NEW_CARD = 'ADD_NEW_CARD';
 export function addNewCard(listId, title = 'What is this card about? ') {
     return {
         type: 'ADD_NEW_CARD',
-        listId, title
+        listId,
+        title
     };
 }
 
@@ -26,7 +28,8 @@ export const MOVE_CARD = 'MOVE_CARD';
 export function moveCard(cardId, newListId) {
     return {
         type: 'MOVE_CARD',
-        cardId, newListId
+        cardId,
+        newListId
     };
 }
 
@@ -34,7 +37,8 @@ export const CHANGE_CARD = 'CHANGE_CARD';
 export function changeCard(cardId, newTitle) {
     return {
         type: 'CHANGE_CARD',
-        cardId, newTitle
+        cardId,
+        newTitle
     };
 }
 
