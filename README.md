@@ -4,12 +4,10 @@ See it in action here https://trello-reacter.herokuapp.com/
 
 Contains: 
 * ES6 - 7 Support with Babel
-* Redux dev tools to help you keep track of the app's state
 * Routing
-* Hot module replacement support so you can change modules or react components without having to reload the browser
 * A webpack production config so you can build the app and make it ready for production
 * Sass support, just import your styles wherever you need them
-* eslint to keep your js readable
+* eslint to keep JS readable
 * express.js server
 * Procfile for Heroku
 * React dnd for drag-drop
@@ -20,8 +18,6 @@ Contains:
 
 0. ```npm install```
 0. ```npm start-dev```
-
-Once running, if you want to hide the redux dev monitor: ```CTRL+H```
 
 Yes, it takes a while to load the first time you open the app.
 
