@@ -46,27 +46,15 @@ class Card extends React.Component {
         connectDragSource: PropTypes.func.isRequired,
     };
 
-    constructor(props) {
-        super(props);
-        this.dataChanged = this.dataChanged.bind(this);
-    }
-
-    dataChanged(data) {
-        // Todo: Find a better way to do this
-        this.setState({...data});
-        this.props.onTitleChanged(this.props.id, data.title);
-    }
-
     render() {
-        const { title, connectDragSource, isDragging, onCardBeginEdit } = this.props;
+        const { title, connectDragSource, isDragging, onTitleChanged } = this.props;
         return connectDragSource(
             <div className="Card" style={{opacity: isDragging ? 0.5 : 1}}>
                 <div className="Card-title">
                     <RIEInput
                         className="Card-title-inline"
                         value={title}
-                        change={this.dataChanged}
-                        beforeStart={onCardBeginEdit}
+                        change={onTitleChanged}
                         classEditing="editing"
                         propName="title"/>
                 </div>

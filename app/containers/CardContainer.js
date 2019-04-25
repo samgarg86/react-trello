@@ -20,10 +20,10 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onDroppedCard: (cardId, listId) => dispatch(actions.moveCard(cardId, listId)),
-        onCardTitleChanged: (cardId, newTitle) => dispatch(actions.changeCard(cardId, newTitle)),
+        onCardTitleChanged: (newTitle) => dispatch(actions.changeCard(ownProps.id, newTitle.title)),
         onCardBeginEdit: (cardId) => dispatch(actions.beginEditCard(cardId))
     };
 };

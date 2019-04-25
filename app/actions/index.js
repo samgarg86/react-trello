@@ -1,5 +1,5 @@
 export const ADD_NEW_LIST = 'ADD_NEW_LIST';
-export function addNewList(title = 'Type List Name') {
+export function addNewList(title = 'New List') {
     return {
         type: 'ADD_NEW_LIST',
         title
@@ -16,7 +16,7 @@ export function changeListTitle(id, title) {
 }
 
 export const ADD_NEW_CARD = 'ADD_NEW_CARD';
-export function addNewCard(listId, title = 'What is this card about? ') {
+export function addNewCard(listId, title = 'New Card') {
     return {
         type: 'ADD_NEW_CARD',
         listId,

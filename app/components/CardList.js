@@ -15,7 +15,7 @@ class CardList extends React.Component  {
     static propTypes = {
         id: PropTypes.number,
         title: PropTypes.string,
-        onAddCard: PropTypes.func,
+        addNewCard: PropTypes.func,
         cards: PropTypes.array,
         filter: PropTypes.string,
         onTitleChanged: PropTypes.func,
@@ -25,18 +25,8 @@ class CardList extends React.Component  {
         canDrop: PropTypes.bool.isRequired,
     };
 
-    constructor(props) {
-        super(props);
-        this.dataChanged = this.dataChanged.bind(this);
-    }
-
-    dataChanged(data) {
-        this.setState({...data});
-        this.props.onTitleChanged(this.props.id, data.title);
-    }
-
     render() {
-        const {title, cards, filter, onAddCard, connectDropTarget, isOver, canDrop} = this.props;
+        const {title, cards, filter, addNewCard, connectDropTarget, isOver, canDrop, onTitleChanged} = this.props;
 
         const isActive = canDrop && isOver;
 
@@ -66,12 +56,12 @@ class CardList extends React.Component  {
                     <RIEInput
                         className="CardList-title-inline"
                         value={title}
-                        change={this.dataChanged}
+                        change={onTitleChanged}
                         classEditing="editing"
                         propName="title"/>
                 </div>
                 { rows }
-                <a href="#" className="Cardlist-addCard" onClick={onAddCard}>Add a card...</a>
+                <a href="#" className="Cardlist-addCard" onClick={addNewCard}>Add a card...</a>
             </div>
         );
     }
