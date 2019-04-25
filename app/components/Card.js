@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import { DragSource } from 'react-dnd';
 import ItemTypes from '../ItemTypes';
-import InlineEdit from 'react-edit-inline';
+import { RIEInput } from 'riek';
 import '../styles/Card.scss';
 
 const cardSource = {
@@ -39,6 +39,7 @@ class Card extends React.Component {
         title: PropTypes.string,
         onDropped: PropTypes.func,
         onTitleChanged: PropTypes.func,
+        onCardBeginEdit: PropTypes.func,
 
         // Injected by React DnD:
         isDragging: PropTypes.bool.isRequired,
@@ -51,25 +52,23 @@ class Card extends React.Component {
     }
 
     dataChanged(data) {
+        // Todo: Find a better way to do this
         this.setState({...data});
         this.props.onTitleChanged(this.props.id, data.title);
     }
 
     render() {
-        const { title, connectDragSource, isDragging } = this.props;
+        const { title, connectDragSource, isDragging, onCardBeginEdit } = this.props;
         return connectDragSource(
             <div className="Card" style={{opacity: isDragging ? 0.5 : 1}}>
                 <div className="Card-title">
-                    <InlineEdit
+                    <RIEInput
                         className="Card-title-inline"
-                        staticElement="div"
-                        activeClassName="editing"
-                        editing
-                        stopPropagation
-                        text={title}
-                        paramName="title"
+                        value={title}
                         change={this.dataChanged}
-                    />
+                        beforeStart={onCardBeginEdit}
+                        classEditing="editing"
+                        propName="title"/>
                 </div>
             </div>
         );

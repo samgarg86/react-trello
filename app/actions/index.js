@@ -33,6 +33,14 @@ export function moveCard(cardId, newListId) {
     };
 }
 
+export const BEGIN_EDIT_CARD = 'BEGIN_EDIT_CARD';
+export function beginEditCard(cardId) {
+    return {
+        type: 'BEGIN_EDIT_CARD',
+        cardId
+    };
+}
+
 export const CHANGE_CARD = 'CHANGE_CARD';
 export function changeCard(cardId, newTitle) {
     return {

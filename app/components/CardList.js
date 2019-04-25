@@ -1,6 +1,6 @@
 import React, {PropTypes} from 'react';
 import { DropTarget } from 'react-dnd';
-import InlineEdit from 'react-edit-inline';
+import { RIEInput } from 'riek';
 import ItemTypes from '../ItemTypes';
 import CardContainer from '../containers/CardContainer';
 import '../styles/CardList.scss';
@@ -63,16 +63,12 @@ class CardList extends React.Component  {
         return connectDropTarget(
             <div className="CardList" style={{backgroundColor}}>
                 <div className="CardList-title">
-                    <InlineEdit
+                    <RIEInput
                         className="CardList-title-inline"
-                        staticElement="div"
-                        activeClassName="editing"
-                        editing
-                        stopPropagation
-                        text={title}
-                        paramName="title"
+                        value={title}
                         change={this.dataChanged}
-                    />
+                        classEditing="editing"
+                        propName="title"/>
                 </div>
                 { rows }
                 <a href="#" className="Cardlist-addCard" onClick={onAddCard}>Add a card...</a>

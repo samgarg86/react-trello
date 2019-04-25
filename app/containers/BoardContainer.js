@@ -2,8 +2,6 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import Header from '../components/Header';
 import * as actions from '../actions';
-import HTML5Backend from 'react-dnd-html5-backend';
-import { DragDropContext } from 'react-dnd';
 import CardListContainer from '../containers/CardListContainer';
 import '../styles/BoardContainer.scss';
 
