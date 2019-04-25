@@ -4,7 +4,7 @@ import CardList from '../components/CardList';
 import {connect} from 'react-redux';
 
 const CardListContainer = ({id, title, cards, filter, addNewCard, onListTitleChanged}) => {
-    return <CardList id={id} title={title} cards={cards} filter={filter} onAddCard={() => addNewCard(id)} onTitleChanged={onListTitleChanged} />;
+    return <CardList id={id} title={title} cards={cards} filter={filter} addNewCard={addNewCard} onTitleChanged={onListTitleChanged} />;
 };
 
 CardListContainer.propTypes = {
@@ -26,10 +26,10 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        addNewCard: (cardListId) => dispatch(actions.addNewCard(cardListId)),
-        onListTitleChanged: (cardListId, newTitle) => dispatch(actions.changeListTitle(cardListId, newTitle))
+        addNewCard: () => dispatch(actions.addNewCard(ownProps.id)),
+        onListTitleChanged: (newTitle) => dispatch(actions.changeListTitle(ownProps.id, newTitle.title))
     };
 };
 

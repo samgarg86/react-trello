@@ -27,6 +27,10 @@ const cards = (state = [], action) => {
             const cardToMove = state[action.cardId];
             newState[action.cardId] = Object.assign({}, cardToMove, {listId: action.newListId});
             return newState;
+        case actions.BEGIN_EDIT_CARD:
+            const cardToEdit = state[action.cardId];
+            newState[action.cardId] = Object.assign({}, cardToEdit, {title: ''});
+            return newState;
         case actions.CHANGE_CARD:
             const cardToChange = state[action.cardId];
             newState[action.cardId] = Object.assign({}, cardToChange, {title: action.newTitle});
